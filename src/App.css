@@ -36,3 +36,49 @@
     transform: rotate(360deg);
   }
 }
+:root {
+  --background-color: #fff1ed !important;
+  --button-font: lemon milk !important;
+  --blue-color: #374b73 !important;
+  --button-color: #ff83d4 !important;
+  --h1-font: "Unica One" !important;
+  --button_hover: #a30e6f !important;
+  --h1-size: 60px !important;
+  --h1-padding: 50px !important;
+  --p-font: century gothic;
+}
+
+.admincss{
+  display: flex;
+  flex-direction: row;
+  height: 70vh;
+  /* padding: 0px 0px 0px 78px; */
+  justify-content: center;
+}
+
+.SideNav{
+  height: 1020px;
+  max-width: 18%;
+  background-color: #ff83d4;
+  position: fixed;
+}
+
+.Tabs{
+  width: 80%;
+  /* height: 86%; */
+  /* max-width: 82%; */
+  padding: 0px;
+  margin: 0px;
+  position: absolute;
+  top: 57px;
+}
+
+.sidenav---sidenav---_2tBP.sidenav---expanded---1KdUL {
+  min-width: 190px;
+}
+
+
+.slick-prev:before {
+  content: '←';
+  color: #ec81d3;
+}
