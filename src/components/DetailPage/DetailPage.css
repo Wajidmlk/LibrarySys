@@ -1,0 +1,60 @@
+:root {
+    --background-color: #fff1ed !important;
+    --button-font: lemon milk !important;
+    --blue-color: #374b73 !important;
+    --button-color: #ff83d4 !important;
+    --h1-font: "Unica One" !important;
+    --button_hover: #a30e6f !important;
+    --h1-size: 60px !important;
+    --h1-padding: 50px !important;
+    --p-font: century gothic;
+}
+
+
+.NewUsers{
+    float: right;
+    margin: 10px 50px 0 0;
+    height: 600px;
+    width: 40%;
+    overflow: scroll;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+}
+.details{
+    height: 600px;
+}
+.Users{
+    width: 70%;
+    /* text-align: center; */
+    margin-top: 20px;
+    margin-left: 160px;
+    border-radius: 15px;
+    box-shadow: rgb(0 0 0 / 24%) 0px 6px 12px;
+    color: rgb(32, 0, 0);
+    padding: 0px 10%;
+    font-family: var(--p-font);
+}
+
+.Users i{
+    font-size: 12px;
+}
+
+
+/* hide scrollbar but allow scrolling */
+.NewUsers {
+    -ms-overflow-style: none; /* for Internet Explorer, Edge */
+    scrollbar-width: none; /* for Firefox */
+    overflow-y: scroll; 
+}
+
+.NewUsers::-webkit-scrollbar {
+    display: none; /* for Chrome, Safari, and Opera */
+}
+
+.NewUsers, h3{
+    color: black;
+    align-items: center;
+    font-family: var(--h1-font);
+    font-size: 30px;
+}

@@ -3,7 +3,7 @@ import React, { Component } from "react";
 import { SERVER_CREDENTIALS } from '../../ext/dependencies/CONSTANTS';
 
 
-class ProjectsReport extends Component {
+class Reports extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -61,11 +61,11 @@ class ProjectsReport extends Component {
     const { project } = this.state;
 
     return (
-      <div className="ProjectsReport">
+      <div className="Reports">
         <h3><center>Students List</center></h3>
         {project && this.renderproject(project)}
       </div>
     );
   }
 }
-export default ProjectsReport;
+export default Reports;

@@ -15,7 +15,7 @@ function App() {
   return (
     <div className="App">
       <div className='admincss'>
-        <SideNav  className='SideNav'
+        <SideNav  className='SideNav' expanded ={ true }
         onSelect = { selected => {
             // We are storing current tab in Local Storage to remember last opened tab
             localStorage.setItem( ADMIN_PANEL.TABS._TABS_NAME, selected  );
@@ -24,8 +24,7 @@ function App() {
           }
         }
         >
-        <SideNav.Toggle />
-        
+        <h3 style={{ color:'#fff' }}>LibrarySYS</h3>
         <SideNav.Nav >
         <NavItem eventKey='0'>
         <NavIcon>
