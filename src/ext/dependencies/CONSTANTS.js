@@ -73,62 +73,8 @@ export const SERVER_CREDENTIALS = {
     }
 }
 
-export const USER_CREDENTIALS = {
-    INFO: {
-        _LOCAL_LOGIN_KEY : 'logged',
-        _USER_NAME : 'user_name',
-        _USER_EMAIL : 'user_email'
-    },
-    USER_PREFERENCES: {
-        _LOGIN_WITH_REGISTER : false
-    }
-}
-
-export const ADMIN_CREDENTIALS = {
-    INFO: {
-        _LOCAL_LOGIN_KEY : 'admin_logged',
-        _ADMIN_NAME : 'admin_name',
-        _ADMIN_EMAIL : 'admin_email'
-    },
-    USER_PREFERENCES: {
-        _LOGIN_WITH_REGISTER : false
-    }
-}
-
 export const ADMIN_PANEL = {
     TABS: {
         _TABS_NAME : 'currentTab'
-    }
-}
-
-export const ADMIN_INBOX = {
-    USERS: {
-        _ACTIVE_USER : 'Active'
-    }
-}
-
-export const SOCKET_IO = {
-    HOST: 'http://localhost:5001',
-    CALLS: {
-        SEND: 'send_message',
-        RECIEVE: 'receive_message',
-        JOIN: 'joined_chat'
-    }
-}
-
-export const APP = {
-    ROUTES: {
-        ADMIN: '/admin',
-        HOME: '/home',
-        HOMESUBS: {
-            HOME: '/',
-            PROJECTS: '/Projects',
-            LOGIN: '/Login',
-            SERVICES: '/Services',
-            ABOUT: '/About',
-            CONTACT: '/Contact',
-            CONSOLE: '/Console',
-            PROFILE: '/Profile'
-        }
     }
 }

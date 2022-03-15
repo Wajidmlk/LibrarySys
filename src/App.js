@@ -1,14 +1,12 @@
-import React, { useState, useEffect } from 'react';
-import SideNav, { NavItem, NavIcon, NavText } from '@trendmicro/react-sidenav';
-import { ADMIN_PANEL } from './ext/dependencies/CONSTANTS.js'; /* using locale for configuration strings  */
-import 'react-tabs/style/react-tabs.css';
-import { Tabs, TabPanel } from 'react-tabs';
+import React, { useState } from 'react';
 import './App.css';
+import 'react-tabs/style/react-tabs.css';
+import '@trendmicro/react-sidenav/dist/react-sidenav.css';
+import { Tabs, TabPanel } from 'react-tabs';
 import Books from './components/BooksReport/BooksReport';
 import Students from './components/StudentsReport/StudentsReport';
-import DetailPage from './components/DetailPage/DetailPage';
-import '@trendmicro/react-sidenav/dist/react-sidenav.css';
-
+import SideNav, { NavItem, NavIcon, NavText } from '@trendmicro/react-sidenav';
+import { ADMIN_PANEL } from './ext/dependencies/CONSTANTS.js'; /* using locale for configuration strings  */
 
 function App() {
   const [ tab, setTab ] = useState( localStorage.getItem( ADMIN_PANEL.TABS._TABS_NAME ) | 0 );
@@ -19,7 +17,6 @@ function App() {
         onSelect = { selected => {
             // We are storing current tab in Local Storage to remember last opened tab
             localStorage.setItem( ADMIN_PANEL.TABS._TABS_NAME, selected  );
-            //this.setTabStatus( Number.parseInt( selected ) );
             setTab( Number.parseInt( selected ) );
           }
         }
@@ -40,12 +37,6 @@ function App() {
         <NavText style={{ fontFamily: 'Century Gothic' }}>Books</NavText>
         </NavItem>
         
-        <NavItem eventKey='2'>
-        <NavIcon>
-        <i className='fa fa-users' style={{ fontSize: '1.75em', color:'#fff', cursor:'pointer'  }} />
-        </NavIcon>
-        <NavText style={{ fontFamily: 'Century Gothic' }}>Details</NavText>
-        </NavItem>
         </SideNav.Nav>
         </SideNav>
         <Tabs selectedIndex = { tab } className='Tabs'>
@@ -54,9 +45,6 @@ function App() {
         </TabPanel>
         <TabPanel>
           <Books />
-        </TabPanel>
-        <TabPanel>
-          <DetailPage />
         </TabPanel>
         </Tabs>
       </div>

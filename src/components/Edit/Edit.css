@@ -1,0 +1,49 @@
+
+.Profile-page {
+  height: 100%;
+  width: 100%;
+}
+
+.profile-page-center {
+  align-content: center;
+  justify-content: center;
+  align-items: center;
+  height: 75vh;
+  margin: 1%;
+}
+
+@media only screen and (max-width: 650px) {
+  .profile-page-center {
+    flex-direction: column;
+  }
+
+  .profile-information {
+    padding-left: 0px;
+  }
+  .information-head {
+    padding-left: 0px;
+  }
+}
+
+
+
+.info-box {
+  margin-top: 100px;
+  height: 100%;
+  width: 100%;
+  background-color: white;
+  box-shadow: 3px 3px 7px #a7a7a7;
+  border-radius: 33px;
+  display: flex;
+  padding: 10px;
+  flex-direction: column;
+}
+
+.info-box > label {
+  
+  padding: 10px 0;
+}
+.info-box > label > input {
+  
+  margin-left: 20px;
+}

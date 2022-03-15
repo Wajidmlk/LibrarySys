@@ -1,8 +1,10 @@
 
 import React, { Component } from "react";
-import { SERVER_CREDENTIALS } from './../../ext/dependencies/CONSTANTS';
-import "./BooksReport.css";
+import ReactDOM from 'react-dom';
+import { SERVER_CREDENTIALS } from '../../ext/dependencies/CONSTANTS';
+import Edit from './../Edit/Edit';
 
+import "./BooksReport.css";
 
 class Reports extends Component {
   constructor(props) {
@@ -28,6 +30,14 @@ class Reports extends Component {
      */
   }
 
+  editbutton( param ) {
+    ReactDOM.render(
+      <Edit paramBookTitle = { param } />,
+      document.getElementById('ReportsID')
+      );
+    console.log('Pressed: ',param);
+  }
+  
 
   /*
    * Rendering project table
@@ -47,14 +57,14 @@ class Reports extends Component {
         <div className="data_table-reports">
           
           <div className="body_User_report">
-            {this.state.project.map((proj, i) => {
+            {project.map((proj, i) => {
               return (
-                <div key={ i } className="data_row_reports">
+                <div key={ i } className="data_books_row_reports">
                   <div>{proj.title}</div>
                   <div>{proj.author}</div>
                   <div>{proj.issuedTo}</div>
                   <div>{proj.issueDate}</div>
-                  <div>{proj.returnDate}</div>
+                  <div>{proj.returnDate}<div style={{float:'right'}}><button onClick={() => this.editbutton(proj.author)}>Edit</button></div></div>
                 </div>
               );
             })}
@@ -66,11 +76,101 @@ class Reports extends Component {
 
   render() {
     const { project } = this.state;
-
+    const report = [
+      {
+        title: "SPIDER-MAN",
+        author:
+"wajidmlk",
+          issuedTo: "spider",
+          issueDate: "spider",
+          returnDate: "spider",
+          returnDate: "spider"
+      },
+      {
+        title: "SPIDER-GWEN",
+        author:
+          "wajidmlk",
+        issuedTo: "spider",
+          issueDate: "spider",
+          returnDate: "spider"
+      },
+      {
+        title: "KID ARACHNID",
+        author:
+          "wajidmlk",
+        issuedTo: "spider",
+          issueDate: "spider",
+          returnDate: "spider"
+      },
+      {
+        title: "SPIDER-GIRL",
+        author:
+          "wajidmlk",
+        issuedTo: "spider",
+          issueDate: "spider",
+          returnDate: "spider"
+      },
+      {
+        title: "SPIDER-MAN PROTO SUIT",
+        author:
+          "wajidmlk",
+        issuedTo: "spider",
+          issueDate: "spider",
+          returnDate: "spider"
+      },
+      {
+        title: "SPIDER-MAN SYMBIOTE SUIT",
+        author:
+          "wajidmlk",
+        issuedTo: "spider",
+          issueDate: "spider",
+          returnDate: "spider"
+      },
+      {
+        title: "SPIDER-MAN 2099",
+        author:
+          "wajidmlk",
+        issuedTo: "spider",
+          issueDate: "spider",
+          returnDate: "spider"
+      },
+      {
+        title: "IRON SPIDER",
+        author:
+          "wajidmlk",
+        issuedTo: "spider",
+          issueDate: "spider",
+          returnDate: "spider"
+      },
+      {
+        title: "GREEN GOBLIN",
+        author:
+          "wajidmlk",
+        issuedTo: "goblin",
+          issueDate: "spider",
+          returnDate: "spider"
+      },
+      {
+        title: "VENOM",
+        author:
+          "wajidmlk",
+        issuedTo: "snake"
+,
+          issueDate: "spider",
+          returnDate: "spider"      },
+      {
+        title: "CARNAGE",
+        author:
+          "wajidmlk",
+        issuedTo: "snake"
+,
+          issueDate: "spider",
+          returnDate: "spider"      }
+    ];
     return (
-      <div className="Reports">
+      <div id="ReportsID" className="Reports">
         <h3><center>Books List</center></h3>
-        {project && this.renderproject(project)}
+        {project && this.renderproject(report)}
       </div>
     );
   }
