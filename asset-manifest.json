@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/librarysys/static/css/main.66030cad.css",
-    "main.js": "/librarysys/static/js/main.2441bf64.js",
-    "static/js/787.d80fe124.chunk.js": "/librarysys/static/js/787.d80fe124.chunk.js",
-    "index.html": "/librarysys/index.html",
-    "main.66030cad.css.map": "/librarysys/static/css/main.66030cad.css.map",
-    "main.2441bf64.js.map": "/librarysys/static/js/main.2441bf64.js.map",
-    "787.d80fe124.chunk.js.map": "/librarysys/static/js/787.d80fe124.chunk.js.map"
+    "main.css": "/LibrarySys/static/css/main.66030cad.css",
+    "main.js": "/LibrarySys/static/js/main.70c191af.js",
+    "static/js/787.d80fe124.chunk.js": "/LibrarySys/static/js/787.d80fe124.chunk.js",
+    "index.html": "/LibrarySys/index.html",
+    "main.66030cad.css.map": "/LibrarySys/static/css/main.66030cad.css.map",
+    "main.70c191af.js.map": "/LibrarySys/static/js/main.70c191af.js.map",
+    "787.d80fe124.chunk.js.map": "/LibrarySys/static/js/787.d80fe124.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.66030cad.css",
-    "static/js/main.2441bf64.js"
+    "static/js/main.70c191af.js"
   ]
 }
