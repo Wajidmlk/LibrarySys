@@ -1,18 +1,18 @@
 export const SERVER_CREDENTIALS = {
     GET_STUDENTS: {
-        _API : 'http://localhost:5000/getStudents',
+        _API : 'https://librarysysserver.herokuapp.com/getStudents',
         _METHOD: 'get'
     },
     SET_STUDENT: {
-        _API : 'http://localhost:5000/setStudent',
+        _API : 'https://librarysysserver.herokuapp.com/setStudent',
         _METHOD: 'post'
     },
     GET_BOOKS: {
-        _API : 'http://localhost:5000/getBooks',
+        _API : 'https://librarysysserver.herokuapp.com/getBooks',
         _METHOD: 'get'
     },
     SET_BOOK: {
-        _API : 'http://localhost:5000/setBook',
+        _API : 'https://librarysysserver.herokuapp.com/setBook',
         _METHOD: 'post'
     }
 }
