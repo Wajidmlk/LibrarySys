@@ -4,77 +4,79 @@ import {
   SERVER_CREDENTIALS,
 } from "../../ext/dependencies/CONSTANTS";
 
-const Profile = ( { paramFirstName, paramBookTitle } ) => {
+const Profile = ( { param } ) => {
+  const [scope, setScope] = useState('NaN');
   const [title, setTitle] = useState("");
+  const [author, setAuthor] = useState("");
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
-  const [number, setNumber] = useState("");
-  const [gender, setGender] = useState("f");
-  const [type, setType] = useState("dev");
-  const [image, setImage] = useState(null);
+  const [issueto, setIssueTo] = useState("");
+  const [issuedate, setIssueDate] = useState("");
+  const [returndate, setReturnDate] = useState("");
 
-  const getUserProfile = (tempEmail) => {
-    fetch(SERVER_CREDENTIALS.GET_USER._API, {
-      method: SERVER_CREDENTIALS.GET_USER._METHOD,
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-      }),
-    })
-    .then( response => response.json() )
-    .then( responseJson => {
-      if( responseJson !== null && responseJson.data !== null ){
+
+  useEffect(() => { 
+    if( param != null && param != "") {
+      if( param.firstname != null ){
+        setScope( 'std' );
+        setFirstName( param.firstname );
+        setLastName( param.lastname );
+      } else if( param.title != null ){
+        setScope( 'book' );
+        setTitle( param.title );
+        setAuthor( param.author );
+        setIssueTo( param.issueto );
+        setReturnDate( param.returndate );
+        setIssueDate( param.issuedate );
       }
-    });
-  }
-  useEffect(() => {
-
-    getUserProfile(localStorage.getItem("USER_CREDENTIALS.INFO._USER_EMAIL"));
+    }
   }, []);
 
-  /**
-   * updateProfile(...)
-   *
-   *      this function is used to hit Login Api and Set User
-   *
-   *      @param { email, password } userInputs
-   *
-   *      @returns { response } from Api as true or false
-   *
-   */
-  const updateProfile = () => {
-    if ( true ) {
-      //  making requestt to backend for login
-      fetch(SERVER_CREDENTIALS.EDIT_USER._API, {
-        method: SERVER_CREDENTIALS.EDIT_USER._METHOD,
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-        }),
-      })
-        .then((response) => response.json())
-        .then((responseJson) => {
-          if (responseJson.success) {
-          } else {
-            //  pop will popout to tell about Failed login
-            //responseMessage("Oh no!", "Something went wrong, Please Try Again");
-          }
-        });
-    } else {
-      //  pop will tells about empty fields
-     // responseMessage("Info", "Please fill name atleast");
-    }
-  };
 
   const goBack = () => {
     window.location.reload();
   }
 
+  const saveData = () => {
+    if( scope == 'std' ){
+      fetch( SERVER_CREDENTIALS.SET_STUDENT._API, {
+        method: SERVER_CREDENTIALS.SET_STUDENT._METHOD,
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify( 
+          { 
+            user_id: param.user_id,
+            firstname: firstName,
+            lastname: lastName
+          }
+        ) 
+      } );
+    }else if( scope == 'book' ){
+      fetch( SERVER_CREDENTIALS.SET_BOOK._API, {
+        method: SERVER_CREDENTIALS.SET_BOOK._METHOD,
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify( 
+          { 
+            user_id: param.user_id,
+            author: author,
+            title: title,
+            issueto: issueto,
+            issuedate: issuedate,
+            returndate: returndate
+          }
+        ) 
+      } );
+    }
+     
+    goBack();
+  }
+  
   return (
     <div className="Profile-page">
       <div className='profile-page-center'>
         <div className='info-box'>
           <h3>Edit Menu</h3>
           {
-            ( paramFirstName != null && paramFirstName != "" ) ? 
+            ( scope == 'std' ) ? 
             <>
             <h6>Student Details</h6>
               <label>
@@ -82,39 +84,34 @@ const Profile = ( { paramFirstName, paramBookTitle } ) => {
                 <input type="text" value = { firstName } onChange={ ( event ) => { setFirstName( event.target.value ) } } />
               </label>
               <label>
-                Last Name
+                Last Name 
                 <input type="text" value = { lastName } onChange={ ( event ) => { setLastName( event.target.value ) } }/>
               </label>
             </>    
-             : ( paramBookTitle != null && paramBookTitle != "" ) ? 
+             : ( scope == 'book' ) ? 
              <>
              <h6>Book Details</h6>
-              <label>
-                Title
+             Title<label>
                 <input type="text" value = { title } onChange={ ( event ) => { setTitle( event.target.value ) } } />
               </label>
-              <label>
-                Title
-                <input type="text" value = { title } onChange={ ( event ) => { setTitle( event.target.value ) } } />
+              Author<label>
+                <input type="text" value = { author } onChange={ ( event ) => { setAuthor( event.target.value ) } } />
               </label>
-              <label>
-                Title
-                <input type="text" value = { title } onChange={ ( event ) => { setTitle( event.target.value ) } } />
+              Issued To<label>
+                <input type="text" value = { issueto } onChange={ ( event ) => { setIssueTo( event.target.value ) } } />
               </label>
-              <label>
-                Title
-                <input type="text" value = { title } onChange={ ( event ) => { setTitle( event.target.value ) } } />
+              Issue Date<label>
+                <input type="date" value = { issuedate } onChange={ ( event ) => { setIssueDate( event.target.value ) } } />
               </label>
-              <label>
-                Title
-                <input type="text" value = { title } onChange={ ( event ) => { setTitle( event.target.value ) } } />
+              Return Date<label>
+                <input type="date" value = { returndate } onChange={ ( event ) => { setReturnDate( event.target.value ) } } />
               </label>
              </> : 
              <>
               Something went wrong please press Back Button and try again!
              </>
           }
-          <input style={{width:'250px', 'margin-left':'35%', 'margin-top':'2%'}} type="button" onClick={ updateProfile } value="Submit" />
+          <input style={{width:'250px', 'margin-left':'35%', 'margin-top':'2%'}} type="button" onClick={ saveData } value="Submit" />
           <input style={{width:'250px', 'margin-left':'35%', 'margin-top':'2%'}} type="button" onClick={ goBack } value="Back" />
         </div>
 

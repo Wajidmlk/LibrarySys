@@ -1,47 +1,23 @@
 
-import React, { Component } from "react";
+import React from "react";
 import ReactDOM from 'react-dom';
-import { SERVER_CREDENTIALS } from '../../ext/dependencies/CONSTANTS';
 import Edit from './../Edit/Edit';
 
 
-class Reports extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      project: [],
-      projects: []
-    };
-  }
+const Reports = ( { studentsList } ) => {
   
-  editbutton( param ) {
+  const editbutton = ( param ) => {
     ReactDOM.render(
-      <Edit paramFirstName = { param } />,
+      <Edit param = { param } />,
       document.getElementById('ReportsID')
       );
-    console.log('Pressed: ',param);
   }
   
-
-  componentDidMount() {
-    fetch( SERVER_CREDENTIALS.GET_PROJECTS._API )
-    .then( response => response.json() )
-    .then( responseJson => {
-      if( responseJson !== null && responseJson.length > 0 ){
-        this.setState( { projects: responseJson } );
-        this.setState({ project: this.state.projects });
-      }
-    });
-    /*
-     * Fetching project data here. You can replace this with your GET request
-     */
-  }
-
 
   /*
    * Rendering project table
    */
-  renderproject(project) {
+  const renderproject = ( data )=> {
     
     return (
       <div>
@@ -53,11 +29,11 @@ class Reports extends Component {
         <div className="data_table-reports">
           
           <div className="body_User_report">
-            {project.map((proj, i) => {
+            {data.map((proj, i) => {
               return (
                 <div key={ i } className="data_row_reports">
-                  <div>{proj.firstName}</div>
-                  <div>{proj.lastName} <div style={{float:'right'}}><button onClick={() => this.editbutton(proj.firstName)}>Edit</button></div></div>
+                  <div>{proj.firstname}</div>
+                  <div>{proj.lastname} <div style={{float:'right'}}><button onClick={() => editbutton( proj ) }>Edit</button></div></div>
                 </div>
               );
             })}
@@ -67,82 +43,12 @@ class Reports extends Component {
     );
   }
 
-  render() {
-    const { project } = this.state;
-    const report = [
-      {
-        firstName: "SPIDER-MAN",
-        lastName:
-          "wajidmlk@gmail.com",
-        category: "spider"
-      },
-      {
-        firstName: "SPIDER-GWEN",
-        lastName:
-          "wajidmlk@gmail.com",
-        category: "spider"
-      },
-      {
-        firstName: "KID ARACHNID",
-        lastName:
-          "wajidmlk@gmail.com",
-        category: "spider"
-      },
-      {
-        firstName: "SPIDER-GIRL",
-        lastName:
-          "wajidmlk@gmail.com",
-        category: "spider"
-      },
-      {
-        firstName: "SPIDER-MAN PROTO SUIT",
-        lastName:
-          "wajidmlk@gmail.com",
-        category: "spider"
-      },
-      {
-        firstName: "SPIDER-MAN SYMBIOTE SUIT",
-        lastName:
-          "wajidmlk@gmail.com",
-        category: "spider"
-      },
-      {
-        firstName: "SPIDER-MAN 2099",
-        lastName:
-          "wajidmlk@gmail.com",
-        category: "spider"
-      },
-      {
-        firstName: "IRON SPIDER",
-        lastName:
-          "wajidmlk@gmail.com",
-        category: "spider"
-      },
-      {
-        firstName: "GREEN GOBLIN",
-        lastName:
-          "wajidmlk@gmail.com",
-        category: "goblin"
-      },
-      {
-        firstName: "VENOM",
-        lastName:
-          "wajidmlk@gmail.com",
-        category: "snake"
-      },
-      {
-        firstName: "CARNAGE",
-        lastName:
-          "wajidmlk@gmail.com",
-        category: "snake"
-      }
-    ];
-    return (
-      <div id="ReportsID" className="Reports">
-        <h3><center>Students List</center></h3>
-        {project && this.renderproject(report)}
-      </div>
-    );
-  }
+
+  return (
+    <div id="ReportsID" className="Reports">
+      <h3><center>Students List</center></h3>
+      { studentsList && renderproject( studentsList ) }
+    </div>
+  );
 }
 export default Reports;
