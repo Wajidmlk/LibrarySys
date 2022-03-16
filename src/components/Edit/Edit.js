@@ -14,15 +14,18 @@ const Profile = ( { param } ) => {
   const [issuedate, setIssueDate] = useState("");
   const [returndate, setReturnDate] = useState("");
 
+  //  constants
+  const SCOPE_STD = 'std';
+  const SCOPE_BOOK = 'book';
 
   useEffect(() => { 
     if( param != null && param != "") {
       if( param.firstname != null ){
-        setScope( 'std' );
+        setScope( SCOPE_STD );
         setFirstName( param.firstname );
         setLastName( param.lastname );
       } else if( param.title != null ){
-        setScope( 'book' );
+        setScope( SCOPE_BOOK );
         setTitle( param.title );
         setAuthor( param.author );
         setIssueTo( param.issueto );
@@ -38,7 +41,7 @@ const Profile = ( { param } ) => {
   }
 
   const saveData = () => {
-    if( scope == 'std' ){
+    if( scope == SCOPE_STD ){
       fetch( SERVER_CREDENTIALS.SET_STUDENT._API, {
         method: SERVER_CREDENTIALS.SET_STUDENT._METHOD,
         headers: { "Content-Type": "application/json" },
@@ -50,7 +53,7 @@ const Profile = ( { param } ) => {
           }
         ) 
       } );
-    }else if( scope == 'book' ){
+    }else if( scope == SCOPE_BOOK ){
       fetch( SERVER_CREDENTIALS.SET_BOOK._API, {
         method: SERVER_CREDENTIALS.SET_BOOK._METHOD,
         headers: { "Content-Type": "application/json" },
@@ -76,7 +79,7 @@ const Profile = ( { param } ) => {
         <div className='info-box'>
           <h3>Edit Menu</h3>
           {
-            ( scope == 'std' ) ? 
+            ( scope == SCOPE_STD ) ? 
             <>
             <h6>Student Details</h6>
               <label>
@@ -88,7 +91,7 @@ const Profile = ( { param } ) => {
                 <input type="text" value = { lastName } onChange={ ( event ) => { setLastName( event.target.value ) } }/>
               </label>
             </>    
-             : ( scope == 'book' ) ? 
+             : ( scope == SCOPE_BOOK ) ? 
              <>
              <h6>Book Details</h6>
              Title<label>
