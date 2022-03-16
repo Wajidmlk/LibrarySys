@@ -20,7 +20,9 @@ const Reports = ( { studentsList } ) => {
     .then( responseJson => setBookList( responseJson ) );
   }, []);
 
-
+  /**
+   * This function renders Update Record Component
+   */
   const editbutton = ( param ) => {
     ReactDOM.render(
       <Edit param = { param } />,
@@ -69,7 +71,8 @@ const Reports = ( { studentsList } ) => {
                   <div>{( proj.issueto == 0 ) ? '--' : proj.returndate}<div style={{float:'right'}}><button onClick={() => editbutton( proj ) }>Edit</button></div></div>
                 </div>
               );
-            })}
+            })
+          }
           </div>
         </div>
       </div>

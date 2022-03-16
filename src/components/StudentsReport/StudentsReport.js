@@ -3,9 +3,11 @@ import React from "react";
 import ReactDOM from 'react-dom';
 import Edit from './../Edit/Edit';
 
-
 const Reports = ( { studentsList } ) => {
-  
+ 
+  /**
+   * This function renders Update Record Component
+   */  
   const editbutton = ( param ) => {
     ReactDOM.render(
       <Edit param = { param } />,
@@ -13,7 +15,6 @@ const Reports = ( { studentsList } ) => {
       );
   }
   
-
   /*
    * Rendering project table
    */
@@ -42,7 +43,6 @@ const Reports = ( { studentsList } ) => {
       </div>
     );
   }
-
 
   return (
     <div id="ReportsID" className="Reports">

@@ -3,22 +3,22 @@ import './App.css';
 import 'react-tabs/style/react-tabs.css';
 import '@trendmicro/react-sidenav/dist/react-sidenav.css';
 import { Tabs, TabPanel } from 'react-tabs';
+import SideNav, { NavItem, NavIcon, NavText } from '@trendmicro/react-sidenav';
 import Books from './components/BooksReport/BooksReport';
 import Students from './components/StudentsReport/StudentsReport';
-import SideNav, { NavItem, NavIcon, NavText } from '@trendmicro/react-sidenav';
 import { ADMIN_PANEL, SERVER_CREDENTIALS } from './ext/dependencies/CONSTANTS.js'; /* using locale for configuration strings  */
 
 function App() {
   
+  // using Hooks to store and fetch data
   const [ studentsList, setStudentList ] = useState( [] );
-
   const [ tab, setTab ] = useState( localStorage.getItem( ADMIN_PANEL.TABS._TABS_NAME ) | 0 );
 
   /*
   * Fetching Students records here.
   */
   useEffect(() => { 
-
+    // Fetching data from our Backend Server
     fetch( SERVER_CREDENTIALS.GET_STUDENTS._API )
     .then( response => response.json() )
     .then( responseJson => setStudentList( responseJson ) );
